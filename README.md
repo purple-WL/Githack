@@ -7,7 +7,7 @@
 解析.git/index文件➡️爬取解析的结果➡️保存本地
 
 使用方法很简单：
-python Githack.py http://xxx.com
+python Githack1.py http://xxx.com
 
 效果：
 

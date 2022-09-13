@@ -21,7 +21,7 @@ class Scanner(object):
 
         if not os.path.exists(self.domain.netloc):
             os.makedirs(self.domain.netloc)
-        #os.mkdir('static.myysq.com.cn')
+        
         print '[+] Download and parse index file ...'
         data = self._request_data(self.base_url + '/.git/index')
         with open('index', 'wb') as f:

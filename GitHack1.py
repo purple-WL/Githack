@@ -33,7 +33,7 @@ class Scanner(object):
                 try:
                     URL = (self.base_url+'./'+entry['name'])
                     print URL
-                    self._request_data(URL)
+                    data1 = self._request_data(URL)
                     domain = urlparse.urlparse(URL)
                     file_name = domain.path.replace('/./','')
                     target_dir = os.path.join(domain.netloc, os.path.dirname(file_name))
@@ -41,7 +41,7 @@ class Scanner(object):
                     if target_dir and not os.path.exists(target_dir):
                         os.makedirs(target_dir)
                     with open(os.path.join(domain.netloc, file_name), 'wb') as f:
-                        f.write(data)
+                        f.write(data1)
 
                 except Exception as e:
                     pass
@@ -52,7 +52,7 @@ class Scanner(object):
     @staticmethod
     def _request_data(url):
         
-        request = urllib2.Request(url, None, {'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X)'})
+        request = urllib2.Request(url, None, {'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X)','Accept-Encoding': 'gzip, deflate'})
         #request.set_proxy('127.0.0.1:8080','http')
         return urllib2.urlopen(request,context=context).read()
 
